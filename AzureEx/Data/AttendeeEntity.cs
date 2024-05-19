@@ -9,6 +9,9 @@ namespace AzureEx.Data
         public string LastName { get; set; } = string.Empty;
         public string Email { get; set; }   
         public string Industry { get; set; } 
+
+        public string ImageName { get; set; }
+
         public string PartitionKey { get; set; }
         public string RowKey { get; set; }
         public DateTimeOffset? Timestamp { get; set; }

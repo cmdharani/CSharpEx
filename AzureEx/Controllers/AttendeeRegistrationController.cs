@@ -8,15 +8,23 @@ namespace AzureEx.Controllers
     public class AttendeeRegistrationController : Controller
     {
         private readonly ITableStorageService _tableStorageService;
+        private readonly IBlobStorageService _blogStorageService;
 
-        public AttendeeRegistrationController(ITableStorageService tableStorageService) {
-            this._tableStorageService = tableStorageService;
+        public AttendeeRegistrationController(ITableStorageService tableStorageService,
+            IBlobStorageService blogStorageService )
+        {
+            _tableStorageService = tableStorageService;
+            _blogStorageService = blogStorageService;
         }
 
         // GET: AttendeeRegistrationController
         public async Task<ActionResult> Index()
         {
             var data=  await   _tableStorageService.GetAttendees();
+            foreach (var item in data)
+            {
+                item.ImageName = await _blogStorageService.GetBlobUrl(item.ImageName);
+            }
             return View(data);
         }
 
@@ -24,6 +32,7 @@ namespace AzureEx.Controllers
         public async Task<ActionResult> Details(string id,string industry)
         {
             var data = await _tableStorageService.GetAttendee(industry,id);
+            data.ImageName = await _blogStorageService.GetBlobUrl(data.ImageName);
             return View(data);
         }
 
@@ -36,12 +45,23 @@ namespace AzureEx.Controllers
         // POST: AttendeeRegistrationController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(AttendeeEntity attendeeEntity)
+        public async Task<ActionResult> Create(AttendeeEntity attendeeEntity,IFormFile formFile)
         {
             try
             {
+                var id=Guid.NewGuid().ToString();
                 attendeeEntity.PartitionKey = attendeeEntity.Industry;
-                attendeeEntity.RowKey=Guid.NewGuid().ToString();
+                attendeeEntity.RowKey=id;
+
+                if(formFile.Length>0)
+                {
+                    attendeeEntity.ImageName = await _blogStorageService.UploadBlob(formFile,id);
+
+                }
+                else
+                {
+                    attendeeEntity.ImageName = "default.jpg";
+                }
 
                 await _tableStorageService.UpdateAttendee(attendeeEntity);
 
@@ -63,13 +83,22 @@ namespace AzureEx.Controllers
         // POST: AttendeeRegistrationController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(AttendeeEntity attendeeEntity)
+        public async Task<ActionResult> Edit(AttendeeEntity attendeeEntity,IFormFile formFile)
         {
             try
             {
+
+                if (formFile?.Length > 0)
+                {
+                    attendeeEntity.ImageName = await _blogStorageService.UploadBlob(formFile, attendeeEntity.RowKey);
+
+                }
+
                 attendeeEntity.PartitionKey = attendeeEntity.Industry;
 
                 await _tableStorageService.UpdateAttendee(attendeeEntity);
+
+           
 
                 return RedirectToAction(nameof(Index));
             }
@@ -79,20 +108,23 @@ namespace AzureEx.Controllers
             }
         }
 
-        // GET: AttendeeRegistrationController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //// GET: AttendeeRegistrationController/Delete/5
+        //public async Task<ActionResult> Delete(string id, string industry)
+        //{
+        //    var data = await _tableStorageService.GetAttendee(industry, id);
+        //    return View(data);
+        //}
 
-        // POST: AttendeeRegistrationController/Delete/5
+        //POST: AttendeeRegistrationController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(string id, string industry)
         {
             try
             {
+                var data = await _tableStorageService.GetAttendee(industry, id);
                 await _tableStorageService.DeleteAttendee(industry, id);
+                await _blogStorageService.RemoveBlob(data.ImageName);
                 return RedirectToAction(nameof(Index));
             }
             catch
