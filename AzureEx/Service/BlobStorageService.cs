@@ -41,9 +41,9 @@ namespace AzureEx.Service
             formFile.CopyTo(memoryStream);
             memoryStream.Position = 0;
             var blob = container.GetBlobClient(imageName);
-            await blob.UploadAsync(content: memoryStream, overwrite: true);
+            //await blob.UploadAsync(content: memoryStream, overwrite: true); // with this line, it is uploading but while retriving it is giving error
 
-           // var client = await container.UploadBlobAsync(blobName, memoryStream);
+            var client = await container.UploadBlobAsync(blobName, memoryStream);
 
             return blobName;
 

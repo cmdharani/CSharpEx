@@ -2,6 +2,7 @@ using AzureEx.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.AddScoped<ITableStorageService, TableStorageService>();
 builder.Services.AddScoped<IBlobStorageService,BlobStorageService>();
 // Add services to the container.

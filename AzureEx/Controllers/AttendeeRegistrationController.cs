@@ -9,12 +9,14 @@ namespace AzureEx.Controllers
     {
         private readonly ITableStorageService _tableStorageService;
         private readonly IBlobStorageService _blogStorageService;
+        private readonly IQueueService _queueService;
 
         public AttendeeRegistrationController(ITableStorageService tableStorageService,
-            IBlobStorageService blogStorageService )
+            IBlobStorageService blogStorageService , IQueueService queueService)
         {
             _tableStorageService = tableStorageService;
             _blogStorageService = blogStorageService;
+            _queueService = queueService;
         }
 
         // GET: AttendeeRegistrationController
@@ -65,6 +67,17 @@ namespace AzureEx.Controllers
 
                 await _tableStorageService.UpdateAttendee(attendeeEntity);
 
+
+                var email = new EmailMessage {
+                    EmailAddress = attendeeEntity.Email,
+                    TimeStamp = DateTime.Now,
+                    Message = $"Hi, Thanks for registering"
+                
+                
+                };
+
+                await _queueService.SendMessage(email);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -102,7 +115,7 @@ namespace AzureEx.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch( Exception ex) 
             {
                 return View();
             }
@@ -125,6 +138,20 @@ namespace AzureEx.Controllers
                 var data = await _tableStorageService.GetAttendee(industry, id);
                 await _tableStorageService.DeleteAttendee(industry, id);
                 await _blogStorageService.RemoveBlob(data.ImageName);
+
+
+                var email = new EmailMessage
+                {
+                    EmailAddress = data.Email,
+                    TimeStamp = DateTime.Now,
+                    Message = $"Hi, It is the notification for delete"
+
+
+                };
+
+                await _queueService.SendMessage(email);
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch
