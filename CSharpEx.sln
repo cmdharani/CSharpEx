@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureEx", "AzureEx\AzureEx.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureQueueConsumer", "AzureQueueConsumer\AzureQueueConsumer.csproj", "{57499C42-1FF6-4ADC-A854-316C6D51323B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusSender", "AzureServiceBus\AzureServiceBusSender.csproj", "{33BA3D34-76F6-45FA-910E-9B0BC9EB9947}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureServiceBusSender", "AzureServiceBus\AzureServiceBusSender.csproj", "{33BA3D34-76F6-45FA-910E-9B0BC9EB9947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureServiceBusConsumer", "AzureServiceBusConsumer\AzureServiceBusConsumer.csproj", "{43940A1E-D45B-4CDD-80F2-94FE472546A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{33BA3D34-76F6-45FA-910E-9B0BC9EB9947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33BA3D34-76F6-45FA-910E-9B0BC9EB9947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33BA3D34-76F6-45FA-910E-9B0BC9EB9947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43940A1E-D45B-4CDD-80F2-94FE472546A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43940A1E-D45B-4CDD-80F2-94FE472546A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43940A1E-D45B-4CDD-80F2-94FE472546A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43940A1E-D45B-4CDD-80F2-94FE472546A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{36E773DB-85FC-4527-98EC-509AA0ED2BCB} = {A7095A07-E474-4862-9509-962675C8C784}
 		{57499C42-1FF6-4ADC-A854-316C6D51323B} = {A7095A07-E474-4862-9509-962675C8C784}
 		{33BA3D34-76F6-45FA-910E-9B0BC9EB9947} = {A7095A07-E474-4862-9509-962675C8C784}
+		{43940A1E-D45B-4CDD-80F2-94FE472546A8} = {A7095A07-E474-4862-9509-962675C8C784}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30D37732-8EC2-4A54-805F-25B4C464A3AB}
