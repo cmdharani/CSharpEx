@@ -6,7 +6,7 @@ namespace CSharpEx
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main1()
         {
             //Console.WriteLine("today I came to know the CW is the shortcut for console writeline");
             
