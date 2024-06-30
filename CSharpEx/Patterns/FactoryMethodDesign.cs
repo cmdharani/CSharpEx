@@ -83,7 +83,7 @@ namespace FactoryMethodDesignPattern
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             // The client code works with an instance of a concrete creator
             // The CreateProduct will return the actual product instance via the product interface

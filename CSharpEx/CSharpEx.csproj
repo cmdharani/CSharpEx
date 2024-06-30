@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Patterns\AbstractFactoryDesign.cs" />
     <Compile Include="Patterns\FactoryDesign.cs" />
     <Compile Include="Patterns\FactoryMethodDesign.cs" />
     <Compile Include="Program.cs" />
