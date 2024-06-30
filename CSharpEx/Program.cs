@@ -1,4 +1,5 @@
 ﻿using System;
+using ExtensionMethods;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,10 +7,10 @@ namespace CSharpEx
 {
     public class Program
     {
-        static void Main1()
+        static void Main()
         {
             //Console.WriteLine("today I came to know the CW is the shortcut for console writeline");
-            
+
 
             //int a = 1;
             //int b = 2;
@@ -38,11 +39,18 @@ namespace CSharpEx
             //Console.WriteLine($"checking equal using Generics for string --> {name} and {name1} " + Generics.IsItEqual(name, name1));
 
 
-            //Console.WriteLine("\n \n \n");
-            //Console.WriteLine("Extension Methods");
+            Console.WriteLine("\n \n \n");
+            Console.WriteLine("Extension Methods");
 
-            //string postDetails = "This is long post, where we have lot of description";
-            //var shortenedPostDetails = postDetails.Shortened(5);
+            string postDetails = "This is long post, where we have lot of description";
+            var shortenedPostDetails = postDetails.Shortened(5);
+            Console.WriteLine(shortenedPostDetails);
+
+
+            int ad = 3;
+            var result = ad.isPrimeNumber();
+
+            Console.WriteLine(result);
 
             //Console.WriteLine(shortenedPostDetails);
 
@@ -52,18 +60,45 @@ namespace CSharpEx
             //var max = numbers.Max();
             //Console.WriteLine("returning the max number from the Int Array "+ max);
 
-            Console.WriteLine("\n \n \n");
-            Console.WriteLine("Nullable types ");
+            //Console.WriteLine("\n \n \n");
+            //Console.WriteLine("Nullable types ");
 
-            DateTime? dateTime=null;
-            Console.WriteLine(""+dateTime.GetValueOrDefault());
-            Console.WriteLine("" +dateTime.HasValue);
-            Console.WriteLine(""+ dateTime.Value);
+            //DateTime? dateTime=null;
+            //Console.WriteLine(""+dateTime.GetValueOrDefault());
+            //Console.WriteLine("" +dateTime.HasValue);
+            //Console.WriteLine(""+ dateTime.Value);
+
+
+
+
+            //Delegates
+
+            Square sq = NumberSquare;
+            Console.WriteLine(sq(8));
 
 
 
             Console.ReadLine();
 
         }
+
+
+
+        public delegate int Square(int num);
+
+        static int NumberSquare(int num)
+        {
+            return num * num;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+

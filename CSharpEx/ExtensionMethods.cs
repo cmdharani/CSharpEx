@@ -27,3 +27,27 @@ namespace System // if extension methods is in same namespace, it will refer aut
         }
     }
 }
+
+
+
+
+namespace ExtensionMethods
+{
+    public static class MyExtensions
+    {
+        public static int WordCount(this string str)
+        {
+            return str.Split(new char[] { ' ', '.', '?' },
+                             StringSplitOptions.RemoveEmptyEntries).Length;
+        }
+
+        public static bool isPrimeNumber(this int number)
+        {
+            if(number %2 == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+}
