@@ -8,13 +8,13 @@ namespace BookAPI.Controllers
     public class BooksController:ControllerBase
     {
 
-        private Book[] _books = new Book[] { 
+        private readonly Book[] _books =  [ 
         
-         new Book{ Id=1,Author="Author one", Title="Book One" },
-         new Book{ Id=1,Author="Author two", Title="Book two" },
-         new Book{ Id=1,Author="Author three", Title="Book three" },
-         new Book{ Id=1,Author="Author four", Title="Book four" }
-        };
+         new() { Id=1,Author="Author one", Title="Book One" },
+         new() { Id=1,Author="Author two", Title="Book two" },
+         new() { Id=1,Author="Author three", Title="Book three" },
+         new() { Id=1,Author="Author four", Title="Book four" }
+        ];
 
 
         [HttpGet]
