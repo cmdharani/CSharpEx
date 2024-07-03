@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DelegatesEx.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Patterns\AbstractFactoryDesign.cs" />
     <Compile Include="Patterns\FactoryDesign.cs" />
@@ -56,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Patterns\DependencyInjectionDesignPattern.CS" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

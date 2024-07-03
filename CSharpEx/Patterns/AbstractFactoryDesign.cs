@@ -116,7 +116,7 @@ namespace AbstractFactoryDesign
     //Client Code
     class Program
     {
-        public static void Main()
+        public static void Main1()
         {
             // Fetch the Regular Bike and Car Details
             // Creating RegularVehicleFactory instance

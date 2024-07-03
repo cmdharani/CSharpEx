@@ -3,14 +3,14 @@
 namespace FactoryMethodDesignPattern
 {
 
-    public interface CreditCard
+    public interface ICreditCard
     {
         string GetCardType();
         int GetCreditLimit();
         int GetAnnualCharge();
     }
 
-    public class MoneyBack : CreditCard
+    public class MoneyBack : ICreditCard
     {
         public string GetCardType()
         {
@@ -27,7 +27,7 @@ namespace FactoryMethodDesignPattern
     }
 
 
-    public class Titanium : CreditCard
+    public class Titanium : ICreditCard
     {
         public string GetCardType()
         {
@@ -45,9 +45,9 @@ namespace FactoryMethodDesignPattern
 
     public abstract class CreditCardFactory
     {
-        protected abstract CreditCard MakeProduct();
+        protected abstract ICreditCard MakeProduct();
 
-        public CreditCard CreateProduct()
+        public ICreditCard CreateProduct()
         {
             return this.MakeProduct();
         }
@@ -58,9 +58,9 @@ namespace FactoryMethodDesignPattern
         // The signature of the method still uses the abstract product CreditCard type
         // Even though the concrete MoneyBack product is actually returned from the method.
         // This way the Creator can stay independent of concrete product classes.
-        protected override CreditCard MakeProduct()
+        protected override ICreditCard MakeProduct()
         {
-            CreditCard product = new MoneyBack();
+            ICreditCard product = new MoneyBack();
             return product;
         }
 
@@ -73,9 +73,9 @@ namespace FactoryMethodDesignPattern
         // The signature of the method uses the abstract product CreditCard type,
         // Even though the concrete Titanium product is returned from the method.
         // This way the Abstract Creator CreditCardFactory can stay independent of concrete product classes.
-        protected override CreditCard MakeProduct()
+        protected override ICreditCard MakeProduct()
         {
-            CreditCard product = new Titanium();
+            ICreditCard product = new Titanium();
             return product;
         }
     }
@@ -83,12 +83,12 @@ namespace FactoryMethodDesignPattern
 
     class Program
     {
-        static void Main1(string[] args)
+        static void Main1()
         {
             // The client code works with an instance of a concrete creator
             // The CreateProduct will return the actual product instance via the product interface
             //PlatinumFactory CreateProduct method will return an instance of Platinum Product via the CreditCard interface
-            CreditCard creditCard = new TitaniumFactory().CreateProduct();
+            ICreditCard creditCard = new TitaniumFactory().CreateProduct();
             if (creditCard != null)
             {
                 Console.WriteLine("Card Type : " + creditCard.GetCardType());
