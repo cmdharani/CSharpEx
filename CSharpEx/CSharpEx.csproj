@@ -50,6 +50,7 @@
     <Compile Include="Patterns\AbstractFactoryDesign.cs" />
     <Compile Include="Patterns\FactoryDesign.cs" />
     <Compile Include="Patterns\FactoryMethodDesign.cs" />
+    <Compile Include="Patterns\Singleton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generics.cs" />

@@ -10,7 +10,7 @@ namespace CSharpEx
 
      class ProgramNew
     {
-        static void Main()
+        static void Main1()
         {
             MyDelegate del = ClassA.MethodA;
             del("Hello World");
