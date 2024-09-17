@@ -1,0 +1,59 @@
+﻿
+using System;
+
+namespace NewCSharp
+{
+    internal class Program
+    {
+        public delegate string GreeetingDelegate(string name);
+        public delegate string GreeetAnonymousDelegate(string name);
+        public delegate string GreetingLambdaExpression(string name);
+
+
+        public static string MessageGreeting(string name)
+        {
+            return $"Hi {name}, welcome to Delegate function";
+        }
+
+
+        public static void Main()
+        {
+            GreeetingDelegate greeetingDelegate = new GreeetingDelegate(MessageGreeting);
+            string DelegateMessage = greeetingDelegate.Invoke("Madhu");
+            Console.WriteLine(DelegateMessage);
+
+
+
+            //Anonymous section
+            GreeetAnonymousDelegate greeetAnonymousDelegate = delegate(string name) {
+            
+              return $"Hi {name}, welcome to Anonymous function";
+
+            };
+            string AnonymousMessage = greeetAnonymousDelegate.Invoke("Madhu");
+            Console.WriteLine(AnonymousMessage);
+
+
+            //Lambda section
+            GreetingLambdaExpression greetingLambdaExpression = (name) =>
+            {
+                return $"Hi {name}, welcome to Lambda Expression";
+            };
+
+            string LambdaMessage = greetingLambdaExpression.Invoke("Madhu");
+            Console.WriteLine(LambdaMessage);
+
+            Console.ReadLine();
+
+        }
+
+        
+
+    }
+
+
+
+}
+
+
+

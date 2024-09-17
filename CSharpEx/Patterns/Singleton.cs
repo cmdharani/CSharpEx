@@ -46,7 +46,7 @@ namespace CSharpEx.Patterns
 
     public  class MyClass {
 
-        public static void Main()
+        public static void Main1()
         {
             Console.WriteLine("Hi");
 

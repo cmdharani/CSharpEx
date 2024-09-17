@@ -1,0 +1,22 @@
+﻿@@@@@@@@@@@@@
+
+    //Count the number of character in a sentence
+
+ string message2 = "count the number of characters";
+            //Remove the empty spaces from the message
+            message2 = message2.Replace(" ", string.Empty);
+
+            while (message2.Length > 0)
+            {
+                Console.Write(message2[0] + " : ");
+                int count = 0;
+                for (int j = 0; j < message2.Length; j++)
+                {
+                    if (message2[0] == message2[j])
+                    {
+                        count++;
+                    }
+                }
+                Console.WriteLine(count);
+                message2 = message2.Replace(message2[0].ToString(), string.Empty);
+            }

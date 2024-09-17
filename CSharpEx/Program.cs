@@ -2,12 +2,13 @@
 using ExtensionMethods;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 namespace CSharpEx
 {
     public class Program
     {
-        static void Main1()
+        static void Main()
         {
             //Console.WriteLine("today I came to know the CW is the shortcut for console writeline");
 
@@ -77,6 +78,32 @@ namespace CSharpEx
             Console.WriteLine(sq(8));
 
 
+
+            ArrayList Numbers1 = new ArrayList(2);
+            // Boxing happens - Converting Value type (100, 200) to reference type
+            // Means Integer to object type
+            Numbers1.Add(100);
+            Numbers1.Add(200);
+            // Unboxing happens - 100 and 200 stored as object type
+            // now converted to Integer type
+            foreach (int Number in Numbers1)
+            {
+                Console.Write(Number + "  ");
+            }
+        
+            Console.WriteLine("JI");
+
+            ArrayList Numbers = new ArrayList(3);
+            Numbers.Add(100);
+            Numbers.Add(200);
+            Numbers.Add(300);
+            //It is also possible to store string values
+            Numbers.Add("Hi");
+            foreach (int Number in Numbers)
+            {
+                Console.Write(Number + "  ");
+            }
+            Console.ReadKey();
 
             Console.ReadLine();
 
