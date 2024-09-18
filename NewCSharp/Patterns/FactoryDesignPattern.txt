@@ -1,0 +1,72 @@
+﻿/*
+According to Gang of Four (GoF), a factory is an object used to create other objects. 
+In technical terms, a factory is a class with a method. 
+That method creates and returns different objects based on the received input parameter.*/
+
+
+
+using System;
+
+namespace NewCSharp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            ICreditCard creditCard = CreditcardFactory.GetCreditCard("cashback");
+
+            if (creditCard == null )
+            {
+                Console.WriteLine("Invalid Card type");
+            }
+            else
+            {
+                Console.WriteLine(creditCard.GetCardType());
+            }
+
+            Console.ReadLine();
+        }
+
+    }
+
+    public interface ICreditCard
+    {
+        string GetCardType();
+    }
+
+    public class CashBackCard: ICreditCard
+    {
+        public string GetCardType()
+        {
+            return "Cash Back Credit card";
+        }
+    }
+
+    public class PlantinumCard : ICreditCard
+    {
+        public string GetCardType()
+        {
+            return "Plantinum Credit card";
+        }
+    }
+
+    public class CreditcardFactory
+    {
+        static ICreditCard creditCard =null;
+
+
+        public static ICreditCard GetCreditCard(string cardType)
+        {
+            if (cardType == "cashback")
+                creditCard= new CashBackCard();
+
+            if (cardType == "plantinum")
+                creditCard= new PlantinumCard();
+
+            return creditCard;
+        }
+    }
+
+
+}
+

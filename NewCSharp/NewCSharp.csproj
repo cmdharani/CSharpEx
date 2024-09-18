@@ -54,6 +54,9 @@
     <Content Include="ExtensionMethods.txt" />
     <Content Include="Lambda.txt" />
     <Content Include="Linq\Queries.txt" />
+    <Content Include="Patterns\AbstractFactoryDesignPattern.txt" />
+    <Content Include="Patterns\FactoryDesignPattern.txt" />
+    <Content Include="Patterns\FactoryMethodDesignPattern.txt" />
     <Content Include="Patterns\Singleton.txt" />
   </ItemGroup>
   <ItemGroup />

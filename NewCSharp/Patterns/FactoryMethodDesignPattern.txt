@@ -1,0 +1,111 @@
+﻿/*
+According to the Gang of Four, the Factory Method Design Pattern Defines an interface for 
+creating an object but lets the subclasses decide which class to instantiate. 
+The Factory method lets a class defer instantiation to subclasses.
+
+
+
+The Factory Method design pattern involves a structure where a Creator class delegates 
+the responsibility of instantiating its objects to its subclasses. The Factory Method Design Pattern consists of the following components:
+
+Product: This is the interface or abstract class defining the product the factory
+method will create.
+
+ConcreteProduct: These are the specific implementations of the Product interface
+or abstract class.
+
+Creator: This abstract class or interface declares the FactoryMethod().
+
+ConcreteCreator: Subclasses of Creator that implement the FactoryMethod() to 
+produce ConcreteProduct instances.
+
+*/
+
+
+
+
+using System;
+
+namespace NewCSharp
+{
+    public class Program
+    {
+        public static void Main()
+        {
+
+            ICreditCard creditCard = new PlantinumCardFactory().CreateCreditcard();
+
+            if (creditCard != null)
+            {
+                Console.WriteLine(creditCard.GetCardType());
+            }
+            else
+            {
+                Console.Write("Invalid Card Type");
+            }
+        }
+
+    }
+
+    //Product
+    public interface ICreditCard
+    {
+        string GetCardType();
+    }
+
+    // Concrete Product
+    public class CashBackCard : ICreditCard
+    {
+        public string GetCardType()
+        {
+            return "Cash Back Credit card";
+        }
+    }
+
+    // Concrete Product
+    public class PlantinumCard : ICreditCard
+    {
+        public string GetCardType()
+        {
+            return "Plantinum Credit card";
+        }
+    }
+
+
+    //Abstract Creator
+    public abstract class CreditcardFactory
+    {
+
+        protected abstract ICreditCard MakeCreditCard();
+
+
+        public  ICreditCard CreateCreditcard()
+        {
+            ICreditCard creditCard = MakeCreditCard();
+            return creditCard;
+        }
+    }
+
+
+    //Concrete Creator
+    public class PlantinumCardFactory : CreditcardFactory
+    {
+        protected override ICreditCard MakeCreditCard()
+        {
+            return new PlantinumCard();
+        }
+    }
+
+    public class CashBackCardFactory : CreditcardFactory
+    {
+        protected override ICreditCard MakeCreditCard()
+        {
+            return new CashBackCard();
+        }
+    }
+
+
+}
+
+
+
