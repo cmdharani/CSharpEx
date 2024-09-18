@@ -50,12 +50,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CodeTask.txt" />
+    <Content Include="Algo\CountEachCharInSentence.txt" />
     <Content Include="ExtensionMethods.txt" />
     <Content Include="Lambda.txt" />
+    <Content Include="Linq\Queries.txt" />
+    <Content Include="Patterns\Singleton.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Linq\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

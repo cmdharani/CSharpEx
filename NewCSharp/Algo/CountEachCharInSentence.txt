@@ -1,8 +1,12 @@
-﻿@@@@@@@@@@@@@
+﻿using System;
 
-    //Count the number of character in a sentence
-
- string message2 = "count the number of characters";
+namespace NewCSharp
+{
+    internal class Program
+    {
+        public static void Main()
+        {
+            string message2 = "count the number of characters";
             //Remove the empty spaces from the message
             message2 = message2.Replace(" ", string.Empty);
 
@@ -20,3 +24,18 @@
                 Console.WriteLine(count);
                 message2 = message2.Replace(message2[0].ToString(), string.Empty);
             }
+
+
+            Console.ReadLine();
+        }
+
+    }
+
+
+    
+
+}
+
+
+
+            

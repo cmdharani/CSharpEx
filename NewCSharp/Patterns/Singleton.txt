@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace NewCSharp
+{
+    internal class Program
+    {
+        public static void Main()
+        {
+            GetSingleton obj1 = GetSingleton.GetSingletonObject();
+            GetSingleton obj2 = GetSingleton.GetSingletonObject();
+
+            obj1.PrintSingletonMessage("something");
+            obj2.PrintSingletonMessage("Nothing");
+
+
+            Console.ReadLine();
+        }
+
+    }
+
+
+    public class GetSingleton
+    {
+        static int counter = 0;
+        static GetSingleton objGetSingleton = null;
+
+        static object objGetSingletonObject = new object();
+
+        private GetSingleton()
+        {
+            counter++;
+        }
+
+        public static GetSingleton GetSingletonObject()
+        {
+            lock(objGetSingletonObject)
+            {
+                if (objGetSingleton == null)
+                    return objGetSingleton = new GetSingleton();
+
+                return objGetSingleton;
+            }
+        }
+
+        public void PrintSingletonMessage(string message)
+        {
+            Console.WriteLine("Object counter value : "+ counter);
+            Console.WriteLine(message);
+        }
+    }
+
+}
+
