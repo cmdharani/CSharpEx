@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Algo\CountEachCharInSentence.txt" />
+    <Content Include="Algo\SecondLargestNumber.txt" />
     <Content Include="ExtensionMethods.txt" />
     <Content Include="Lambda.txt" />
     <Content Include="Linq\Queries.txt" />

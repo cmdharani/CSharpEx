@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = { -3,0, 3 };
+            
+
+            int FirstMax=int.MinValue;
+            int secondMax=int.MaxValue;
+
+            foreach(int num in array)
+            {
+                if(num > FirstMax )
+                {
+                    secondMax = FirstMax;
+                    FirstMax = num;
+
+                }
+                else if(num > secondMax )
+                {
+                    secondMax = num;
+                }
+
+            }
+
+                Console.WriteLine("Second Largest Element: " + secondMax);
+
+            Console.ReadLine();
+
+        }
+    }
+}
